@@ -1,8 +1,8 @@
 <script>
     import { resolve } from '$app/paths';
 
-    let modalOpen = false;
-    let modalMessage = '';
+    let modalOpen = $state(false);
+    let modalMessage = $state('');
 
     async function uploadFiles(event) {
         event.preventDefault();
