@@ -61,14 +61,10 @@
 {#if modalOpen}
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
         <div class="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
-            <h3 class="mb-4 text-lg font-semibold">Upload Successful!</h3>
-            <p class="mb-6 text-sm text-gray-700">{modalMessage}</p>
-            <button
-                class="inline-flex items-center justify-center rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-                onclick={closeModal}
-            >
-                Close
-            </button>
+            <h3 class="mb-4 text-xl font-semibold">Upload Successful!</h3>
+            <p class="text-md mb-4 font-normal text-gray-700">Copy down the following key in order to access your files:</p>
+            <p class="mb-6 text-md font-semibold text-black bg-gray-200 rounded-md p-2">{modalMessage}</p>
+            <button class="inline-flex items-center justify-center rounded bg-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-300" onclick={closeModal}>Close</button>
         </div>
     </div>
 {/if}
