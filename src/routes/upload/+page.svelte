@@ -5,6 +5,7 @@
     let modalMessage = $state('');
 
     async function uploadFiles(event) {
+
         event.preventDefault();
 
         const files = event.target.files;
@@ -30,8 +31,9 @@
         const data = await res.json();
         console.log('Upload complete', data);
 
-        const returnedField = data.key;
-        modalMessage = returnedField;
+        const key = data.key;
+
+        modalMessage = key;
         modalOpen = true;
     }
 
@@ -51,7 +53,7 @@
             <div class="flex flex-col items-center justify-center text-body pt-5 pb-6">
                 <svg class="w-8 h-8 mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h3a3 3 0 0 0 0-6h-.025a5.56 5.56 0 0 0 .025-.5A5.5 5.5 0 0 0 7.207 9.021C7.137 9.017 7.071 9 7 9a4 4 0 1 0 0 8h2.167M12 19v-9m0 0-2 2m2-2 2 2"/></svg>
                 <p class="mb-2 text-sm"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs">(MAX. 300MB)</p>
+                <p class="text-xs">(MAX. 100MB)</p>
             </div>
             <input id="dropzone-file" type="file" class="hidden" multiple onchange={uploadFiles}/>
         </label>
@@ -61,7 +63,7 @@
 {#if modalOpen}
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
         <div class="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
-            <h3 class="mb-4 text-xl font-semibold">Upload Successful!</h3>
+            <h3 class="mb-4 text-xl font-semibold">Get your file key</h3>
             <p class="text-md mb-4 font-normal text-gray-700">Copy down the following key in order to access your files:</p>
             <p class="mb-6 text-md font-semibold text-black bg-gray-200 rounded-md p-2">{modalMessage}</p>
             <button class="inline-flex items-center justify-center rounded bg-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-300" onclick={closeModal}>Close</button>
