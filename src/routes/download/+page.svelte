@@ -21,7 +21,10 @@
     function submitKey(event) {
         event.preventDefault();
         if (confirm("These file(s) might be dangerous! Would you like to proceed?")) {
-            const key = event.target.elements.key.value.trim();
+            let key = event.target.elements.key.value.trim();
+            // Prevent human error by replacing common mistakes in the key
+            key = key.replace(' ', '');
+            key = key.replace('I', '1');
             downloadFiles(key);
         } else {
             alert("Download cancelled.");
